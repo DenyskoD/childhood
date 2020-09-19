@@ -37,19 +37,18 @@
                         <div class="header__contacts">
                             <div class="header__contacts-item">
                                 <img src="<?php echo bloginfo('template_url'); ?>/assets/img/icons/svg/email.svg" alt="почта" class="header__contacts-logo">
-                                <a href="mailto:mirdetstva@gmail.com" class="header__contacts-mail">mirdetstva@gmail.com</a>
+                                <a href="mailto:<?  the_field('mail', 2);?>" class="header__contacts-mail"><?  the_field('mail', 2);?></a>
                             </div>
                             <div class="header__contacts-item">
                                 <img src="<?php echo bloginfo('template_url'); ?>/assets/img/icons/svg/phone.svg" alt="телефон" class="header__contacts-logo">
                                 <div class="header__contacts-tel">
-                                    <a href="tel:+797867834347">+797867834347</a>
-                                    <a href="tel:+797867834358">+797867834358</a>
+                                    <a href="tel:<? the_field('tel_first', 2); ?>"><? the_field('tel_first', 2); ?></a>
+                                    <a href="tel:<? the_field('tel_second', 2); ?>"><? the_field('tel_second', 2); ?></a>
                                 </div>
                             </div>
                             <div class="header__contacts-item">
                                 <img src="<?php echo bloginfo('template_url'); ?>/assets/img/icons/svg/pointer.svg" alt="указатель" class="header__contacts-logo">
-                                <address>ул. Василисы Кожиной, 1<br>
-                                    Москва, Россия, 121096</address>
+                                <address><? the_field('adress', 2); ?></address>
                             </div>
                         </div>
                     </div>
