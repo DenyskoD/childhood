@@ -250,9 +250,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="contacts__descr underlined">
-                            Мы находимся в Москве, метро "Парк победы", в деловом центре "Парк победы", второй этаж
-                            <br> <br>
-                            по адресу ул. Василисы Кожиной, 1
+                            <? the_field('get_here', 2);  ?>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -463,32 +461,37 @@
                         <div class="feedslider glide">
                             <div class="glide__track" data-glide-el="track">
                                 <ul class="glide__slides">
-                                    <li class="glide__slide">
-                                        <div class="feedslider__title">
-                                            Иванов Игорь
-                                        </div>
-                                        <div class="feedslider__text">
-                                            Спасибо огромное за вежливость и терпение. Обратился к вам только с идеей для подарка, а вы развили её до полноценного проекта! Так что мой сын теперь круглые сутки играет с железной дорогой, построенной по его планам)
-                                            <br><br>
-                                            Отдельное спасибо менеджеру Маргарите за терпение и стойкость!
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <div class="feedslider__title">
-                                            Черкессов Алексей Дмитриевич
-                                        </div>
-                                        <div class="feedslider__text">
-                                            Заказывал у ребят целую партию игрушек для детского сада. Новый год прошел на ура! Теперь все детишки счастливы и не расстаются со своими подарками, а самые хитрые спрашивают когда следующие праздники)
-                                        </div>
-                                    </li>
-                                    <li class="glide__slide">
-                                        <div class="feedslider__title">
-                                            Анна Сергеевна
-                                        </div>
-                                        <div class="feedslider__text">
-                                            Решила к дню рождения своей малышки заказать подарки здесь. И ни сколько не жалею! Мишка именно такой, как я хотела, прямо как у меня в детстве: мягкий, приятный на ощупь и оочень милый. Сразу видно, что ручная работа.
-                                        </div>
-                                    </li>
+
+                                    <?
+                                        // параметры по умолчанию
+                                        $posts = get_posts( array(
+                                            'numberposts' => -1,
+                                            'category_name'    => 'reviews',
+                                            'orderby'     => 'date',
+                                            'order'       => 'ASC',
+                                            'post_type'   => 'post',
+                                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                                        ) );
+
+                                        foreach( $posts as $post ){
+                                            setup_postdata($post);
+                                        ?>
+
+                                            <li class="glide__slide">
+                                                <div class="feedslider__title">
+                                                    <? the_title();  ?>
+                                                </div>
+                                                <div class="feedslider__text">
+                                                    <? the_field('reviews_text');   ?>
+                                                </div>
+                                            </li>
+
+                                        <?
+                                            }
+
+                                            wp_reset_postdata(); // сброс
+                                    ?>
+
                                 </ul>
                             </div>
 
